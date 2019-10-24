@@ -3,10 +3,14 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const Thing = require('./models/thing');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const DB_USER = 'barmao';
-const PASSWORD = encodeURIComponent('9jdaxBqb156pmb2z');
+const DB_USER = process.env.DB_USER;
+const PASSWORD = process.env.PASSWORD;
 const DB_URL = `mongodb+srv://${DB_USER}:${PASSWORD}@cluster0-fgx5h.mongodb.net/test?retryWrites=true&w=majority`;
+
+console.log(DB_URL);
 
 mongoose.connect(DB_URL).then(()=>{
     console.log('Successfully connected to MongoDB Atlas!');
