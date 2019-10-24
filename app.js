@@ -6,9 +6,11 @@ const Thing = require('./models/thing');
 const dotenv = require('dotenv');
 dotenv.config();
 
+const DB = process.env.DB;
 const DB_USER = process.env.DB_USER;
 const PASSWORD = process.env.PASSWORD;
-const DB_URL = `mongodb+srv://${DB_USER}:${PASSWORD}@cluster0-fgx5h.mongodb.net/test?retryWrites=true&w=majority`;
+const CLUSTER = process.env.CLUSTER;
+const DB_URL = `mongodb+srv://${DB_USER}:${PASSWORD}${CLUSTER}/${DB}?retryWrites=true&w=majority`;
 
 console.log(DB_URL);
 
